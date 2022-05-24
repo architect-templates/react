@@ -7,7 +7,7 @@ keywords:
   - express
 
 dependencies:
-  node-rest-api:  latest
+  node-rest-api: latest
 
 interfaces:
   app:
@@ -25,5 +25,4 @@ services:
       main: 8080
     environment:
       PORT: 8080
-      API_ADDR: ${{ dependencies['node-rest-api'].interfaces.api.url }}
-
+      REACT_APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}

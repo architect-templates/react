@@ -1,9 +1,8 @@
-import React from 'react';
 import axios from 'axios';
-
-const apiAddress = `${process.env.API_ADDR}/items`;
+import React from 'react';
+const apiAddress = `${process.env.REACT_APP_API_ADDR}/items`;
 console.log(process.env);
-console.log(process.env.API_ADDR)
+console.log(process.env.REACT_APP_API_ADDR);
 
 class ItemForm extends React.Component {
     constructor(props) {
@@ -43,10 +42,10 @@ class ItemForm extends React.Component {
     async componentDidMount() {
         console.log(process.env);
         console.log(process.env.API_ADDR)
-        this.setState({items: await this.getItems()} );
+        this.setState({ items: await this.getItems() });
     }
 
-     handleSubmit = async (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
@@ -56,16 +55,16 @@ class ItemForm extends React.Component {
             };
 
             const requestOptions = {
-                 method: 'POST',
-                 headers: { 'Content-Type': 'application/json' },
-                 body: JSON.stringify(body),
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
             }
 
-         const res =  await fetch(apiAddress, requestOptions);
-         const r = await res.json();
+            const res = await fetch(apiAddress, requestOptions);
+            const r = await res.json();
 
-         this.setState({ name: '', rating: '', items: await this.getItems() })
-         console.log(`r.name = ${r.name}, r.rating: ${r.rating} `)
+            this.setState({ name: '', rating: '', items: await this.getItems() })
+            console.log(`r.name = ${r.name}, r.rating: ${r.rating} `)
 
         } catch (err) {
             console.log('Err: ' + err);
