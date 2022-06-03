@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React from 'react';
-import ItemsList from "./ItemsList";
 
 const apiAddress = `${process.env.REACT_APP_API_ADDR}/items`;
 
-class ItemForm extends React.Component {
+class ItemsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -70,17 +69,30 @@ class ItemForm extends React.Component {
     };
 
     render() {
+        const items = [
+            { 'id': 1, 'name': 'Mandy', 'rating': 1},
+            { 'id': 3, 'name': 'Lizzie', 'rating': 3},
+            { 'id': 2, 'name': 'Percy', 'rating': 2}
+        ]
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div style={{display: 'flex'}}>Name:<div style={{width: '8px'}} /><input type="text" name="name" value={this.state.name} onChange={this.handleChange} /></div>
-                <div>Rating: <input type="text" name="rating" value={this.state.rating} onChange={this.handleChange} /></div>
-                <p></p>
-                <input type="submit" value="Submit" />
-                <p></p>
-                <ItemsList/>
-            </form>
+
+            <label>
+                <table className={'table'} size='width:100%'>
+                    <tr>
+                        <th>Name</th>
+                        <th>Rating</th>
+                    </tr>
+                {items.map(function(i, index){
+
+                    return <><tr></tr><td>{i.name}</td><td>{i.rating}</td><tr></tr></>;
+
+                })}
+
+                </table>
+            </label>
+
         );
     }
 }
 
-export default ItemForm;
+export default ItemsList;
