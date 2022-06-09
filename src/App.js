@@ -1,5 +1,5 @@
 import './App.css';
-import ItemForm from './components/ItemComponent';
+import Items from './components/Items';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         </p>
       <header className="App-header" style={{backgroundColor: '#2ca85e'}}>
           <h1>Favorite Horror Films</h1>
-          <ItemForm/>
+          <Items/>
       </header>
     </div>
   );

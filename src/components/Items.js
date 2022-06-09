@@ -4,13 +4,13 @@ import ItemsList from "./ItemsList";
 
 const apiAddress = `${process.env.REACT_APP_API_ADDR}/items`;
 
-class ItemForm extends React.Component {
+class Items extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
             rating: '',
-            items: ''
+            items: []
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -28,11 +28,8 @@ class ItemForm extends React.Component {
 
     getItems = async () => {
         try {
-            const r = await axios.get(apiAddress)
-            return r.data.map((item) => (
-                `id: ${item.id},name: ${item.name}, rating: ${item.rating}`
-            )).join('\n')
-
+            const r = await axios.get(apiAddress);
+            return r.data;
         } catch (error) {
             console.error(error)
         }
@@ -62,7 +59,6 @@ class ItemForm extends React.Component {
             const r = await res.json();
 
             this.setState({ name: '', rating: '', items: await this.getItems() })
-            console.log(`r.name = ${r.name}, r.rating: ${r.rating} `)
 
         } catch (err) {
             console.log('Err: ' + err);
@@ -70,17 +66,19 @@ class ItemForm extends React.Component {
     };
 
     render() {
+        console.log(this.state.items)
+        console.log(this.state.items.length)
         return (
             <form onSubmit={this.handleSubmit}>
-                <div style={{display: 'flex'}}>Name:<div style={{width: '8px'}} /><input type="text" name="name" value={this.state.name} onChange={this.handleChange} /></div>
+                <div>Name: <input type="text" name="name" value={this.state.name} onChange={this.handleChange} /></div>
                 <div>Rating: <input type="text" name="rating" value={this.state.rating} onChange={this.handleChange} /></div>
                 <p></p>
                 <input type="submit" value="Submit" />
                 <p></p>
-                <ItemsList/>
+                {this.state.items.length > 0 ? <ItemsList items={this.state.items}/> : <label>No Entries</label> }
             </form>
         );
     }
 }
 
-export default ItemForm;
+export default Items;
