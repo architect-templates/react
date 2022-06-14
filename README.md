@@ -19,19 +19,19 @@
 ---
 
 # React Starter Project
-React is a popular JavaScript framework for building frontend user interfaces for web applications. 
+[React](https://reactjs.org/) is a popular JavaScript framework for building frontend user interfaces for web applications. 
 This project is an example application bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
-and packaged into an [Architect Component](https://docs.architect.io/components/services/).
+and packaged into an Architect Component.
 
 In the [`architect.yml`](//docs.architect.io/components/architect-yml/n) file for this project, we describe the React application as 
 a [service](https://docs.architect.io/components/services/) and connect it to a 
-[NodeJS REST API](https://github.com/architect-templates/node-rest-api) as a [dependency](https://docs.architect.io/components/dependencies/). 
+[Node.js REST API](https://github.com/architect-templates/node-rest-api) as a [dependency](https://docs.architect.io/components/dependencies/). 
 We also leverage Architect's [service referencing syntax](//docs.architect.io/components/service-discovery/#service-referencing-syntax)
 to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
 
 
 ## Using the React App
-This example application is configured to connect to the [NodeJS Starter Project](https://github.com/architect-templates/node-rest-api) 
+This example application is configured to connect to the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) 
 REST API for its backend, but you can modify the `architect.yml` file to connect to any REST API backend that has been registered to your account as an
 Architect Component.
 
@@ -44,7 +44,7 @@ of all the films and ratings that have been submitted through your application.
 Before you can run this example application, you will need to install the [Architect CLI](https://github.com/architect-team/architect-cli).
 
 ## Registering Dependencies
-Since this application uses the [NodeJS Starter Project](https://github.com/architect-templates/node-rest-api) as an external 
+Since this application uses the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) as an external 
 dependency, packaged into an independent Architect Component, you will need to clone that repository as well as this repository. 
 Dependencies allow you to package the parts of your application stack independently rather than declaring them as services 
 within the same `architect.yml` file, allowing
@@ -55,7 +55,8 @@ before starting the React application locally. This command tells Architect to l
 down a Component that has been registered in Architect Cloud. 
 
 ```sh
-# Clone the NodeJS Starter Project repository, navigate to the repository's top-level directory, and link the project
+# Clone the Node.js Starter Project repository, 
+# Navigate to the repository's top-level directory, and link the project
 $ git clone git@github.com:architect-templates/node-rest-api.git
 $ cd ./node-rest-api
 $ architect link .
