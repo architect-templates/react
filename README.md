@@ -50,7 +50,7 @@ Dependencies allow you to package the parts of your application stack independen
 within the same `architect.yml` file, allowing
 reuse of your components. 
 
-Once you have cloned the Node JS Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration)
+Once you have cloned the Node.js Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration)
 before starting the React application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling
 down a Component that has been registered in Architect Cloud. 
 
@@ -68,8 +68,7 @@ The `architect.yml` file is declarative, which allows the Architect Component it
 from local development all the way to production. Follow these steps to clone this repository and run the application
 locally.
 
-Once the deployment has completed, you can reach your new service by going to http://api.arc.localhost. Architect 
-handles
+Once the deployment has completed, you can reach your new service by going to http://app.arc.localhost. 
 
 ```sh  
 # Clone the repository and navigate to this directory
@@ -85,7 +84,7 @@ Want to try deploying this to a cloud environment? Architect's got you covered t
 [sign up for a free account](https://auth.architect.io/u/signup?state=hKFo2SAtSnhOdXljdy1nelBHb2NlajNhZkkybTlLOEJHcWRFeaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFNCNEZUUFBHaWpBdlA3UVlVV0xFNk1rQVJvUHBzdF9Bo2NpZNkgbElwVzlmcTlJRlFCQmpUZ2xsaE42RUkwMVRYTWhSVm0).
 
 You can then [register each component](https://docs.architect.io/getting-started/?_ga=2.19805311.635236263.1652126693-1328677302.1650395826#register-a-component)
-to your free environment and [deploy the components](https://docs.architect.io/getting-started/introduction/#deploy-to-the-cloud). 
+to your free environment and [deploy the application](https://docs.architect.io/getting-started/introduction/#deploy-to-the-cloud). 
 
 To do this, run the following commands.
 The `<account-name>` is the name you used when you created your account in Architect Cloud. Use "example-environment" for
