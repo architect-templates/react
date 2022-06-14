@@ -1,18 +1,18 @@
-<p style=text-align:center>
+<p align="center">
   <a href="//architect.io" target="blank"><img src="https://docs.architect.io/img/logo.svg" width="320" alt="Architect Logo" /></a>
 </p>
 
-<p style=text-align:center>
+<p align="center">
   A dynamic microservices framework for building, connecting, and deploying cloud-native applications.
 </p>
 
 ---
 
-<p style=text-align:center>
+<p align="center">
   <a href="//react.org" target="blank"><img src="https://create-react-app.dev/img/logo.svg" width="320" alt="React Logo" /></a>
 </p>
 
-<p style=text-align:center>
+<p align="center">
   A JavaScript library for building user interfaces.
 </p>
 
@@ -38,7 +38,7 @@ Architect Component.
 Once this application is running, you will be able to submit your favorite horror films, rate them, and see the list 
 of all the films and ratings that have been submitted through your application. 
 
-<img src="./app-screenshot.png" alt="App Screenshot" />
+<img align="center" src="./app-screenshot.png" alt="App Screenshot" />
 
 ## Requirements
 Before you can run this example application, you will need to install the [Architect CLI](https://github.com/architect-team/architect-cli).
