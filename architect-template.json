@@ -1,0 +1,11 @@
+{
+  "backend": {
+    "required": true,
+    "choices":[
+      {
+        "name": "NodeJS",
+        "project": "https://github.com/architect-templates/node-rest-api"
+      }
+    ]
+  }
+}
