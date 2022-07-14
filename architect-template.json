@@ -3,7 +3,7 @@
     "required": true,
     "choices":[
       {
-        "name": "NodeJS",
+        "name": "node-rest-api",
         "project": "https://github.com/architect-templates/node-rest-api"
       }
     ]
