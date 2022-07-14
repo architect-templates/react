@@ -1,6 +1,7 @@
 {
   "backend": {
     "required": true,
+    "depends_on": "api-db",
     "choices":[
       {
         "name": "node-rest-api",
