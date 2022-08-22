@@ -29,3 +29,12 @@ services:
     environment:
       PORT: 8080
       REACT_APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
+    debug:
+      command: npm run dev
+      build:
+        args:
+          NODE_ENV: development
+      volumes:
+        src:
+          mount_path: /usr/src/app/src
+          host_path: ./src
