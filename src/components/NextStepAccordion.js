@@ -12,7 +12,7 @@ const next_steps = {
 	- Login from the CLI via $architect login
 	- Register all your components created from the init command by running $ architect register
 		in both the front-end folder and back-end folder
-	Go to the components page and deploy the app!`
+	- Go to the components page and deploy the app!`
 }
 
 const hot_reloading = {
