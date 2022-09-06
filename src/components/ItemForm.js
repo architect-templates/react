@@ -76,7 +76,8 @@ class ItemForm extends Component {
                             onChange={e => this.setState({ rating: e.target.value })} />
                     </Form.Group>
                     <div className="d-grid gap-2">
-                    <Button variant="primary" style={{backgroundColor: '#2ca85e'}} size="lg" type="submit" onClick={this.handleSubmit}>
+                    <Button variant="primary" style={{'backgroundColor': '#225560', 'border':'none'}} 
+                        size="lg" type="submit" onClick={this.handleSubmit}>
                         Submit
                     </Button>
                     </div>
