@@ -21,3 +21,15 @@ code {
 table {
   --bs-table-bg: white !important;
 }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width: 70%;
+  background-color: #C8EECD !important;
+  margin: 30px auto 0 auto
+}
+
+#card-header {
+  display: flex;
+  background-color: none !important;
+}
