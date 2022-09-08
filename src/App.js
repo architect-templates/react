@@ -9,7 +9,7 @@ const App = () => (
         <ArchitectHeader/>
 
         <h1 className="header" align="center">
-            Favorite Horror Movies
+            Favorite Movies
         </h1>
 
         <ArchitectNextSteps/>
