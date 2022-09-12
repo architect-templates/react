@@ -33,3 +33,4 @@ class ItemsList extends React.Component {
 }
 
 export default ItemsList;
+

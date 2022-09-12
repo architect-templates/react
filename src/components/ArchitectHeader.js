@@ -6,7 +6,7 @@ class ArchitectHeader extends React.Component {
             <p align="center">
                 <a href="//architect.io" target="blank">
                     <img 
-                        src="https://docs.architect.io/img/logo.svg" 
+                        src="https://cdn.architect.io/logo/horizontal.png" 
                         width="320" 
                         alt="Architect Logo" 
                     />
@@ -17,3 +17,4 @@ class ArchitectHeader extends React.Component {
 }
 
 export default ArchitectHeader;
+
