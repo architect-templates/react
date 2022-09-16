@@ -80,17 +80,12 @@ from local development all the way to production. Follow these steps to clone th
 locally.
 
 Once the deployment has completed, you can reach your new service by going to https://app.localhost.architect.sh.
-<<<<<<< Updated upstream
-
-```sh
-=======
 
 ```sh
 # Register the node-rest-api component with the local registry
 $ git clone git@github.com:architect-templates/node-rest-api.git
 $ architect link ./node-rest-api/architect.yml
 
->>>>>>> Stashed changes
 # Clone the repository and navigate to this directory
 $ git clone git@github.com:architect-templates/react.git
 $ cd ./react
