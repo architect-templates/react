@@ -27,18 +27,10 @@
 This project is an example application bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 and packaged into an Architect Component.
 
-<<<<<<< Updated upstream
-In the [`architect.yml`](//docs.architect.io/components/architect-yml/n) file for this project, we describe the React application as
-a [service](https://docs.architect.io/components/services/) and connect it to a
-[Node.js REST API](https://github.com/architect-templates/node-rest-api) as a [dependency](https://docs.architect.io/components/dependencies/).
-We also leverage Architect's [service referencing syntax](//docs.architect.io/components/service-discovery/#service-referencing-syntax)
-=======
 In the [`architect.yml`](https://docs.architect.io/components/architect-yml/) file for this project, we describe the React application as
 a [service](https://docs.architect.io/components/services/) and connect it to a
 [Node.js REST API](https://github.com/architect-templates/node-rest-api) as a [dependency](https://docs.architect.io/components/dependencies/).
-We also leverage Architect's [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax)
->>>>>>> Stashed changes
-to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
+We also leverage Architect's [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax) to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
 
 
 ## Using the React App
