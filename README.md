@@ -27,11 +27,10 @@
 This project is an example application bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 and packaged into an Architect Component.
 
-In the [`architect.yml`](//docs.architect.io/components/architect-yml/n) file for this project, we describe the React application as
+In the [`architect.yml`](https://docs.architect.io/components/architect-yml/) file for this project, we describe the React application as
 a [service](https://docs.architect.io/components/services/) and connect it to a
 [Node.js REST API](https://github.com/architect-templates/node-rest-api) as a [dependency](https://docs.architect.io/components/dependencies/).
-We also leverage Architect's [service referencing syntax](//docs.architect.io/components/service-discovery/#service-referencing-syntax)
-to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
+We also leverage Architect's [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax) to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
 
 
 ## Using the React App
@@ -80,29 +79,21 @@ $ git clone git@github.com:architect-templates/react.git
 $ cd ./react
 
 # Deploy locally using the dev command
-$ architect dev .
+$ architect dev architect.yml
 ```
 ## Deploying to the Cloud
 
 Want to try deploying this to a cloud environment? Architect's got you covered there, too! It only takes a minute to
-[sign up for a free account](https://auth.architect.io/u/signup?state=hKFo2SAtSnhOdXljdy1nelBHb2NlajNhZkkybTlLOEJHcWRFeaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFNCNEZUUFBHaWpBdlA3UVlVV0xFNk1rQVJvUHBzdF9Bo2NpZNkgbElwVzlmcTlJRlFCQmpUZ2xsaE42RUkwMVRYTWhSVm0).
+[sign up for a free account](https://cloud.architect.io/signup).
 
-You can then [register each component](https://docs.architect.io/getting-started/?_ga=2.19805311.635236263.1652126693-1328677302.1650395826#register-a-component)
-to your free environment and [deploy the application](https://docs.architect.io/getting-started/introduction/#deploy-to-the-cloud).
-
-To do this, run the following commands.
-The `<account-name>` is the name you used when you created your account in Architect Cloud. Use "example-environment" for
-the `<environment-name>` to deploy to the free environment that is created when you register with Architect.
+You can then [deploy the application](https://docs.architect.io/getting-started/introduction/#deploy-to-the-cloud) by running the command below. Note that “example-environment” is the free environment that is created with your Architect account.
 
 ```sh
 # Register and tag the node-rest-api component with Architect Cloud's component registry
 $ cd ../node-rest-api
-$ architect register . --tag latest --account <account-name>
-
-# Register and tag the react component with Architect Cloud's component registry
-$ cd ../react
-$ architect register . --tag latest --account <account-name>
+$ architect register architect.yml
 
 # Deploy to Architect Cloud
-$ architect deploy react -a <account-name> -e <environment-name>
+$ cd ../react
+$ architect deploy architect.yml -e example-environment
 ```
