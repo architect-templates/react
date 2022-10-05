@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 
-class ItemsList extends React.Component {
+class ItemsTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,16 +21,15 @@ class ItemsList extends React.Component {
                 </thead>
                 <tbody>
                 {items.map(function(i, index){
-                    return <>
-                    <tr>
+                    return <tr key={index}>
                         <td>{i.name}</td>
                         <td>{i.rating}</td>
-                    </tr></>;
+                    </tr>;
                 })}
                 </tbody>
             </Table>)
     }
 }
 
-export default ItemsList;
+export default ItemsTable;
 
