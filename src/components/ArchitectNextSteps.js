@@ -4,12 +4,12 @@ class ArchitectNextSteps extends React.Component {
 
     render() {
         return(
-            <div class="card">
-            <div class="px-3 py-3">
-                <div class="pb-2" id="card-header">
-                    <h4><b>Congratulations!</b></h4> 
+            <div className="card">
+            <div className="px-3 py-3">
+                <div className="pb-2" id="card-header">
+                    <h4><b>Congratulations!</b></h4>
                 </div>
-                <div class="card-content">
+                <div className="card-content">
                     <p>You've deployed your app locally. Now what?</p>
                     <ul>
 
