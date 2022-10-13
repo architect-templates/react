@@ -18,8 +18,8 @@ export default App;
 /*
     You'll notice that we've commented out some lines of code.
 
-    If you're ready to learn more about architect, follow the below links for
-    different concepts.
+    If you're ready to learn more about Architect, follow the instructions
+    below to learn about additional features we've added to this application.
 
     - Dependencies:
         * Follow the steps in the README under "Adding a Dependency"
