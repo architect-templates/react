@@ -2,7 +2,7 @@
 /* 
     Want to learn about dependencies?
 
-    Follow along with <URL for dependency walkthrough>
+    Follow along with "Adding a dependency" in the README
 */
 
 import React from 'react';
