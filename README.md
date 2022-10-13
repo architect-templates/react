@@ -106,8 +106,8 @@ After linking, we'll need to bring back some of the commented-out pieces in both
 ### Update the architect.yml file
 
 In the `architect.yml`, uncomment lines 14 and 15. These lines let Architect know
-that the `react component` depends on the `node-rest-api`. Additionally, it tells
-Architect to use the latest linked version available.
+that the `react` component depends on the `node-rest-api`. Additionally, it tells
+Architect to use the latest linked version available with the `latest` tag.
 
 ```yml
 dependencies:
