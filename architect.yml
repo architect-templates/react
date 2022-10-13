@@ -1,7 +1,7 @@
 name: react
 
 description: |
-  Example component that includes a React frontend that integrates with an an Architect dependency for the backend
+  Example component that includes a React frontend
 
 homepage: https://github.com/architect-templates/react
 
@@ -9,26 +9,33 @@ keywords:
   - react
   - express
 
-dependencies:
-  node-rest-api: latest
+## Want to learn about dependencies? Follow along with "Adding a Dependency" in the README
+##   then uncomment the lines below and line 35
+# dependencies:
+#   node-rest-api: latest
 
-interfaces:
-  app:
-    url: ${{ services.app.interfaces.main.url }}
-    ingress:
-      subdomain: app
-
+# Below are the configured services for the React component. Note that the actual
+# react application we're working on is defined as a service on line 23
+# For more info - https://docs.architect.io/components/services/
 services:
+
+  ### This service is the actual React component ###
   app:
+    # Build context is the location of your application relative to the architect.yml file
     build:
       context: ./
       args:
         NODE_ENV: production
+    # Main interface port used to help define the url in the `interfaces` block on line 53
     interfaces:
       main: 8080
+    # Set environment variables for your application here
     environment:
       PORT: 8080
-      REACT_APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
+      # REACT_APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
+    # Debug block is used to enable hot-reloading to make real time changes to an
+    #   application while running `architect dev`. For more info, see -
+    #   https://docs.architect.io/components/local-configuration/#hot-reloading
     debug:
       command: npm run dev
       build:
@@ -36,5 +43,15 @@ services:
           NODE_ENV: development
       volumes:
         src:
+          # The `WORKDIR` definied in the Dockerfile (/usr/src/app) + name of source code directory (/src)
           mount_path: /usr/src/app/src
+          # Path to source code relative to the architect.yml file (/src)
           host_path: ./src
+
+# interfaces are used to expose our application to the gateway, so other dependencies can connect.
+# For more info - https://docs.architect.io/components/interfaces/
+interfaces:
+  app:
+    url: ${{ services.app.interfaces.main.url }}
+    ingress:
+      subdomain: app

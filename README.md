@@ -27,49 +27,14 @@
 This project is an example application bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 and packaged into an Architect Component.
 
-In the [`architect.yml`](https://docs.architect.io/components/architect-yml/) file for this project, we describe the React application as
-a [service](https://docs.architect.io/components/services/) and connect it to a
-[Node.js REST API](https://github.com/architect-templates/node-rest-api) as a [dependency](https://docs.architect.io/components/dependencies/).
-We also leverage Architect's [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax) to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
-
-
-## Using the React App
-This example application is configured to connect to the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api)
-REST API for its backend, but you can modify the `architect.yml` file to connect to any REST API backend that has been registered to your account as an
-Architect Component.
-
-Once this application is running, you will be able to submit your favorite horror films, rate them, and see the list
-of all the films and ratings that have been submitted through your application.
-
-<img align="center" src="./app-screenshot.png" alt="App Screenshot" />
+This starter application will show how easy it is to deploy an application both 
+locally and in a remote environment.
 
 ## Requirements
 Before you can run this example application, you will need to install the [Architect CLI](https://github.com/architect-team/architect-cli).
 
-## Registering Dependencies
-Since this application uses the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) as an external
-dependency, packaged into an independent Architect Component, you will need to clone that repository as well as this repository.
-Dependencies allow you to package the parts of your application stack independently rather than declaring them as services
-within the same `architect.yml` file, allowing
-reuse of your components.
-
-Once you have cloned the Node.js Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration)
-before starting the React application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling
-down a Component that has been registered in Architect Cloud.
-
-```sh
-# Clone the Node.js Starter Project repository,
-# Navigate to the repository's top-level directory, and link the project
-$ git clone git@github.com:architect-templates/node-rest-api.git
-$ cd ./node-rest-api
-$ architect link .
-$ cd ../
-```
-
 ## Running Locally
-The `architect.yml` file is declarative, which allows the Architect Component it describes to be run in any environment,
-from local development all the way to production. Follow these steps to clone this repository and run the application
-locally.
+The `architect.yml` file is declarative, allowing the Architect Component it describes to be run in any environment, from local development to production.
 
 Once the deployment has completed, you can reach your new service by going to https://app.localhost.architect.sh.
 
@@ -96,4 +61,74 @@ $ architect register architect.yml
 # Deploy to Architect Cloud
 $ cd ../react
 $ architect deploy architect.yml -e example-environment
+```
+
+---
+# Additional Learning
+After you feel comfortable deploying a component with Architect, feel free to check out the powerful features we've added into this component.
+
+Additional features within this component:
+* [Adding a dependency](#adding-a-dependency)
+
+
+# Adding a dependency
+Using a microservice framework allows you to decouple an application and
+eleviate many of the problems that come with a monolithic architecture. Architect provides first class support for microservce architecture through the use of
+dependencies. 
+
+This example application is configured to connect to the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api)
+REST API for its backend as a [dependency](https://docs.architect.io/components/dependencies/), but you can modify the `architect.yml` file to connect to any REST API backend that has been registered to your account as an
+Architect Component.
+
+We also leverage Architect's [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax) to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
+
+## Registering Dependencies
+Since this application uses the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) as an external
+dependency, packaged into an independent Architect Component, you will need to clone that repository as well as this repository.
+Dependencies allow you to package the parts of your application stack independently rather than declaring them as services
+within the same `architect.yml` file, allowing
+reuse of your components.
+
+Once you have cloned the Node.js Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration)
+before starting the React application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling
+down a Component that has been registered in Architect Cloud.
+```sh
+# Clone the Node.js Starter Project repository,
+# Navigate to the repository's top-level directory, and link the project
+$ git clone git@github.com:architect-templates/node-rest-api.git
+$ cd ./node-rest-api
+$ architect link .
+$ cd ../
+```
+
+After linking, we'll need to bring back some of the commented-out pieces in both the `architect.yml` file and the application itself.
+
+### Update the architect.yml file
+
+In the `architect.yml`, uncomment lines 14 and 15. These lines let Architect know
+that the `react component` depends on the `node-rest-api`. Additionally, it tells
+Architect to use the latest linked version available.
+
+```yml
+dependencies:
+  node-rest-api: latest
+```
+
+After that, pop down to line 35 to uncomment `REACT_APP_API_ADDR` and save the file. 
+This environment variable will provide the address for the React App to communicate with the API backend. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
+```yml
+environment:
+  REACT_APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
+```
+
+### Update the application
+Finally, navigate to `/src/App.js` and uncomment lines 4 and 11 to bring in
+the ItemForm component and save the file.. This will bring in a form to input your favorite movies,
+which will then display in a table below.
+
+## Relaunch the component
+Now that we've added our dependency, we can relaunch the component. If you haven't
+already stopped your app, do so by hitting `Ctrl-C`. Then run:
+```sh
+$ architect dev .
 ```

@@ -1,21 +1,27 @@
-import Container from 'react-bootstrap/Container';
-import ItemForm from "./components/ItemForm";
 import ArchitectNextSteps from "./components/ArchitectNextSteps";
-import './index.css';
 import ArchitectHeader from './components/ArchitectHeader';
+import './index.css';
+// import ItemForm from "./components/ItemForm";
 
 const App = () => (
-    <Container className="mt-4 p-3">
+    <div className="container">
         <ArchitectHeader/>
-
-        <h1 className="header" align="center">
-            Favorite Movies
-        </h1>
-
+        {/* <h1>Uncomment me to see hot reloading in action!</h1> */}
         <ArchitectNextSteps/>
-        <ItemForm/>
-    </Container>
+        {/* <ItemForm/> */}
+    </div>
 );
 
 export default App;
 
+
+/*
+    You'll notice that we've commented out some lines of code.
+
+    If you're ready to learn more about architect, follow the below links for
+    different concepts.
+
+    - Dependencies:
+        * Follow the steps in the README under "Adding a Dependency"
+        * Uncomment lines 4 and 11
+*/

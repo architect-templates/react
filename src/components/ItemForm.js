@@ -1,3 +1,10 @@
+
+/* 
+    Want to learn about dependencies?
+
+    Follow along with "Adding a dependency" in the README
+*/
+
 import axios from 'axios';
 import React, { Component } from 'react';
 import Form from "react-bootstrap/Form";
@@ -58,6 +65,7 @@ class ItemForm extends Component {
     render() {
         return (
             <>
+                <h1 style={{ marginTop: 20 }}>Favorite Movie</h1>
                 <Form>
                     <Form.Group className="mb-3" controlId="formName">
                         <Form.Label column="lg" lg={2}>Movie Title</Form.Label>
