@@ -13,18 +13,18 @@ class ArchitectNextSteps extends React.Component {
                     <p>Below are additional steps you can try out with your newly deployed <a target={"_blank"} rel="noreferrer" href='https://docs.architect.io/tutorial/create-component/'>component</a>.</p>
                     <ul>
                         <li>Check out Hot-reloading</li>
-                            <ul>
+                            <ol>
                                 <li>Go to <kbd className='cmp_input'>react/src/App.js</kbd> in your project folder and open it.</li>
                                 <li>Uncomment line 9 to show the h1 tag, and save the file.</li>
                                 <li>The app will automatically apply the new changes! For more info, checkout out our <a target={"_blank"} rel="noreferrer" href="https://docs.architect.io/">docs</a>.</li>
-                            </ul>
+                            </ol>
+                        <br/>
                         <li>Deploy your app to the cloud via Architect <b>(Recommended)</b></li>
-                            <ul>
-                                <li>Create an account at <a target={"_blank"} rel="noreferrer" href="https://cloud.architect.io/signup">architect.io</a></li>
-                                <li>Login from the CLI via <kbd className='cmp_input'>architect login</kbd></li>
-                                <li>Register this component created from the <kbd className='cmp_input'>init</kbd> command by running <kbd className='cmp_input'>architect register</kbd></li>
-                                <li>Go to the components page and deploy the app!</li>
-                            </ul>
+                            <ol>
+                                <li>Login or register a new Architect account for free at <a target={"_blank"} rel="noreferrer" href="https://cloud.architect.io/signup">architect.io</a></li>
+                                <li>Authenticate using the CLI by running the command <kbd className='cmp_input'>architect login</kbd></li>
+                                <li>Deploy your app to the cloud using the command <kbd className='cmp_input'>architect deploy</kbd></li>
+                            </ol>
                     </ul>
                 </div>
             </div>
