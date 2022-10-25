@@ -54,8 +54,7 @@ services:
           host_path: ./src
   
   lightweight-api:
-    build:
-      context: ./lightweight-api
+    image: zdj21/lightweight-api:latest
     interfaces:
       http: ${{ secrets.service_api_port }}
 
