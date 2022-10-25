@@ -14,7 +14,6 @@ class TestAPI extends Component {
 
     getQuote = async () => {
         try {
-            console.log(apiAddress);
             const r = await axios.get(apiAddress);
             return r.data;
         } catch (error) {
