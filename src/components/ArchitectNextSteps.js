@@ -1,4 +1,5 @@
 import React from 'react';
+import TestAPI from "./TestAPI";
 
 class ArchitectNextSteps extends React.Component {
 
@@ -6,7 +7,7 @@ class ArchitectNextSteps extends React.Component {
         return(
             <div className="card">
                 <div id="card-header">
-                    <h4><b>Congratulations!</b></h4>
+                    <h4><TestAPI/></h4>
                 </div>
                 <div className="card-content">
                     <p>You've deployed your app locally. Now what?</p>

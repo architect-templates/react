@@ -9,16 +9,20 @@ keywords:
   - react
   - express
 
+secrets:
+  service_api_port:
+    description: Port for Lightweight-api service
+    default: 3000
+  
 ## Want to learn about dependencies? Follow along with "Adding a Dependency" in the README
-##   then uncomment the lines below and line 35
+##   then uncomment the lines below and line 39
 # dependencies:
 #   node-rest-api: latest
 
 # Below are the configured services for the React component. Note that the actual
-# react application we're working on is defined as a service on line 23
+# react application we're working on is defined as a service on line 22
 # For more info - https://docs.architect.io/components/services/
 services:
-
   ### This service is the actual React component ###
   app:
     # Build context is the location of your application relative to the architect.yml file
@@ -33,6 +37,7 @@ services:
     environment:
       PORT: 8080
       # REACT_APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
+      REACT_APP_SERVICE_API_ADDR: ${{ ingresses.lightweight-api.url }}
     # Debug block is used to enable hot-reloading to make real time changes to an
     #   application while running `architect dev`. For more info, see -
     #   https://docs.architect.io/components/local-configuration/#hot-reloading
@@ -47,11 +52,23 @@ services:
           mount_path: /usr/src/app/src
           # Path to source code relative to the architect.yml file (/src)
           host_path: ./src
+  
+  lightweight-api:
+    build:
+      context: ./lightweight-api
+    interfaces:
+      http: ${{ secrets.service_api_port }}
 
-# interfaces are used to expose our application to the gateway, so other dependencies can connect.
+# interfaces are used to expose our application to the gateway, allowing
+#   other services and dependencies to connect to one another.
 # For more info - https://docs.architect.io/components/interfaces/
 interfaces:
   app:
     url: ${{ services.app.interfaces.main.url }}
     ingress:
       subdomain: app
+
+  lightweight-api:
+    url: ${{ services.lightweight-api.interfaces.http.url }}
+    ingress:
+      subdomain: service-api
