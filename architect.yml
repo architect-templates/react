@@ -9,13 +9,15 @@ keywords:
   - react
   - express
 
+# Add secrets to be used by different services. For more information:
+# https://docs.architect.io/deployments/secrets/
 secrets:
   service_api_port:
     description: Port for Lightweight-api service
     default: 3000
   
 ## Want to learn about dependencies? Follow along with "Adding a Dependency" in the README
-##   then uncomment the lines below and line 39
+##   then uncomment the two lines below and uncomment line 41 (REACT_APP_API_ADDR)
 # dependencies:
 #   node-rest-api: latest
 
@@ -38,7 +40,7 @@ services:
       PORT: 8080
       # REACT_APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
       REACT_APP_SERVICE_API_ADDR: ${{ ingresses.lightweight-api.url }}
-    # Debug block is used to enable hot-reloading to make real time changes to an
+    # Debug block is used to enable hot-reloading to make real-time changes to an
     #   application while running `architect dev`. For more info, see -
     #   https://docs.architect.io/components/local-configuration/#hot-reloading
     debug:
@@ -48,11 +50,15 @@ services:
           NODE_ENV: development
       volumes:
         src:
-          # The `WORKDIR` definied in the Dockerfile (/usr/src/app) + name of source code directory (/src)
+          # The `WORKDIR` defined in the Dockerfile (/usr/src/app) + name of source code directory (/src)
           mount_path: /usr/src/app/src
           # Path to source code relative to the architect.yml file (/src)
           host_path: ./src
   
+  #  This is an additional service that adds a lightweight API to the
+  #   application to show off Architect's support for microservice architecture
+  #   through service discovery. For more info, check out:
+  #   https://docs.architect.io/components/service-discovery/
   lightweight-api:
     image: zdj21/lightweight-api:latest
     interfaces:
@@ -60,13 +66,14 @@ services:
 
 # interfaces are used to expose our application to the gateway, allowing
 #   other services and dependencies to connect to one another.
-# For more info - https://docs.architect.io/components/interfaces/
+#   For more info - https://docs.architect.io/components/interfaces/
 interfaces:
+  # Interface for our main React Application
   app:
     url: ${{ services.app.interfaces.main.url }}
     ingress:
       subdomain: app
-
+  # Interface for our API layer
   lightweight-api:
     url: ${{ services.lightweight-api.interfaces.http.url }}
     ingress:
