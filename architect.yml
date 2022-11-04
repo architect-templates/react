@@ -37,7 +37,7 @@ services:
       main: 8080
     # The liveness_probe makes sure the application is healthy - if not, it will re-start the application
     liveness_probe:
-      command: curl --fail 0.0.0.0:8000
+      command: curl --fail 0.0.0.0:8080
       interval: 30s
       failure_threshold: 3
     # Set environment variables for your application here
