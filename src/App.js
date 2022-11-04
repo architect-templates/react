@@ -6,7 +6,7 @@ import './index.css';
 const App = () => (
     <div className="container">
         <ArchitectHeader/>
-        {/* <h1>Uncomment me to see hot reloading in action!</h1> */}
+        {/* <h1 style={{ color: '#FF3377' }}>Uncomment me to see hot reloading in action!</h1> */}
         <ArchitectNextSteps/>
         {/* <ItemForm/> */}
     </div>

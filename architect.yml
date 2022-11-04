@@ -35,6 +35,11 @@ services:
     # Main interface port used to help define the url in the `interfaces` block on line 53
     interfaces:
       main: 8080
+    # The liveness_probe makes sure the application is healthy - if not, it will re-start the application
+    liveness_probe:
+      command: curl --fail 0.0.0.0:8000
+      interval: 30s
+      failure_threshold: 3
     # Set environment variables for your application here
     environment:
       PORT: 8080
