@@ -92,14 +92,14 @@ $ cd ../
 After linking, we'll need to bring back some of the commented-out pieces in both the `architect.yml` file and the application itself.
 
 ### Update the architect.yml file
-In the `architect.yml`, uncomment lines 21 and 22. These lines let Architect know that the `react` component depends on the `node-rest-api`. Additionally, it tells Architect to use the latest linked version available with the `latest` tag.
+In the `architect.yml`, uncomment lines 14 and 15. These lines let Architect know that the `react` component depends on the `node-rest-api`. Additionally, it tells Architect to use the latest linked version available with the `latest` tag.
 
 ```yml
 dependencies:
   node-rest-api: latest
 ```
 
-Uncomment line 45 which includes the environment variable, `REACT_APP_API_ADDR`, and save the file. This environment variable will provide the address for the React App to communicate with the API backend. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
+Uncomment line 38 which includes the environment variable, `REACT_APP_API_ADDR`, and save the file. This environment variable will provide the address for the React App to communicate with the API backend. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
 
 ```yml
 environment:
