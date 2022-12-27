@@ -32,4 +32,3 @@ class ItemsTable extends React.Component {
 }
 
 export default ItemsTable;
-
