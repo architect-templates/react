@@ -1,8 +1,3 @@
-/*
-    Want to learn about dependencies?
-    Follow along with "Adding a dependency" in the README
-*/
-
 import axios from 'axios';
 import React, { Component } from 'react';
 import Button from "react-bootstrap/Button";
@@ -28,8 +23,8 @@ class ItemForm extends Component {
     try {
       const r = await axios.get(apiAddress);
       return r.data;
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err);
     }
   }
 
@@ -43,7 +38,7 @@ class ItemForm extends Component {
     try {
       const body = {
         name: this.state.name,
-        rating: this.state.rating
+        rating: this.state.rating,
       };
 
       const requestOptions = {
@@ -53,9 +48,9 @@ class ItemForm extends Component {
       };
 
       await fetch(apiAddress, requestOptions);
-      this.setState({ name: '', rating: '', items: await this.getItems() })
+      this.setState({ name: '', rating: '', items: await this.getItems(), })
     } catch (err) {
-      console.log('Err: ' + err);
+      console.error(err);
     }
   };
 

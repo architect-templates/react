@@ -1,8 +1,3 @@
-/*
-    Want to learn about dependencies?
-    Follow along with "Adding a dependency" in the README
-*/
-
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 
