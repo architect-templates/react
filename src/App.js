@@ -1,6 +1,6 @@
 import ArchitectHeader from './components/ArchitectHeader';
 import ArchitectNextSteps from "./components/ArchitectNextSteps";
-import ItemForm from "./components/ItemForm";
+// import ItemForm from "./components/ItemForm";
 // import ItemsTable from './components/ItemsTable';
 import './index.css';
 
@@ -8,7 +8,7 @@ const App = () => (
   <div className="container">
     <ArchitectHeader/>
     <ArchitectNextSteps/>
-    <ItemForm/>
+    {/* <ItemForm/> */}
     {/* <ItemsTable/> */}
   </div>
 );

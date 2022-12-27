@@ -107,7 +107,7 @@ environment:
 ```
 
 ### Update the application
-Finally, open  the file `/src/App.js` and uncomment lines 4 and 12 and save the file. This will include a form to input your favorite movies as well as a table to display them.
+Finally, open  the file `/src/App.js` and uncomment lines 3,4,11 and 12 and save the file. This will include a form to input your favorite movies as well as a table to display them.
 
 ## Relaunch the component
 Now that we've added our dependency, we can relaunch the component. If you haven't already stopped your app, do so by hitting `Ctrl-C`. Then run:
