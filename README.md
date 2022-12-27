@@ -81,8 +81,8 @@ Since this application uses the [Node.js Starter Project](https://github.com/arc
 Once you have cloned the Node.js Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration) before starting the React application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling down a Component that has been registered in Architect Cloud.
 
 ```sh
-# Clone the Node.js Starter Project repository,
-# Navigate to the repository's top-level directory, and link the project
+# Clone the Node.js Starter Project repository.
+# Navigate to the repository's top-level directory, and link the project.
 $ git clone git@github.com:architect-templates/node-rest-api.git
 $ cd ./node-rest-api
 $ architect link .
@@ -92,32 +92,26 @@ $ cd ../
 After linking, we'll need to bring back some of the commented-out pieces in both the `architect.yml` file and the application itself.
 
 ### Update the architect.yml file
-
-In the `architect.yml`, uncomment lines 14 and 15. These lines let Architect know that the `react` component depends on the `node-rest-api`. Additionally, it tells Architect to use the latest linked version available with the `latest` tag.
+In the `architect.yml`, uncomment lines 21 and 22. These lines let Architect know that the `react` component depends on the `node-rest-api`. Additionally, it tells Architect to use the latest linked version available with the `latest` tag.
 
 ```yml
 dependencies:
   node-rest-api: latest
 ```
 
-After that, pop down to line 35 to uncomment `REACT_APP_API_ADDR` and save the file.
-This environment variable will provide the address for the React App to communicate with the API backend. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
+Uncomment line 45 which includes the environment variable, `REACT_APP_API_ADDR`, and save the file. This environment variable will provide the address for the React App to communicate with the API backend. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
 
 ```yml
 environment:
-  REACT_APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
+  REACT_APP_API_ADDR: ${{ dependencies.node-rest-api.services.api.interfaces.main.ingress.url }}
 ```
 
 ### Update the application
-
-Finally, navigate to `/src/App.js` and uncomment lines 4 and 11 to bring in
-the ItemForm component and save the file.. This will bring in a form to input your favorite movies,
-which will then display in a table below.
+Finally, open  the file `/src/App.js` and uncomment lines 4 and 12 and save the file. This will include a form to input your favorite movies as well as a table to display them.
 
 ## Relaunch the component
+Now that we've added our dependency, we can relaunch the component. If you haven't already stopped your app, do so by hitting `Ctrl-C`. Then run:
 
-Now that we've added our dependency, we can relaunch the component. If you haven't
-already stopped your app, do so by hitting `Ctrl-C`. Then run:
 ```sh
 $ architect dev .
 ```

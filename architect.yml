@@ -18,8 +18,8 @@ secrets:
 
 ## Want to learn about dependencies? Follow along with "Adding a Dependency" in the README
 ##   then uncomment the two lines below and uncomment line 52 (REACT_APP_API_ADDR)
-dependencies:
-  node-rest-api: latest
+# dependencies:
+#   node-rest-api: latest
 
 # Below are the configured services for the React component. Note that the actual
 # react application we're working on is defined as a service on line 29
@@ -42,7 +42,7 @@ services:
           subdomain: app
     environment:
       PORT: 8080
-      REACT_APP_API_ADDR: ${{ dependencies.node-rest-api.services.api.interfaces.main.ingress.url }}
+      # REACT_APP_API_ADDR: ${{ dependencies.node-rest-api.services.api.interfaces.main.ingress.url }}
     # The liveness_probe makes sure the application is healthy - if not, it will re-start the application
     liveness_probe:
       command: curl --fail 0.0.0.0:8080
