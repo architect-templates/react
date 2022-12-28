@@ -1,21 +1,20 @@
-import Container from 'react-bootstrap/Container';
-import ItemForm from "./components/ItemForm";
+import ArchitectHeader from './components/ArchitectHeader';
+// import ArchitectItems from "./components/ArchitectItems";
 import ArchitectNextSteps from "./components/ArchitectNextSteps";
 import './index.css';
-import ArchitectHeader from './components/ArchitectHeader';
 
 const App = () => (
-    <Container className="mt-4 p-3">
-        <ArchitectHeader/>
-
-        <h1 className="header" align="center">
-            Favorite Movies
-        </h1>
-
-        <ArchitectNextSteps/>
-        <ItemForm/>
-    </Container>
+  <div className="container">
+    <ArchitectHeader/>
+    <ArchitectNextSteps/>
+    {/* <ArchitectItems/> */}
+  </div>
 );
 
 export default App;
 
+/*
+  Some lines of code in this file are commented out. Follow along with the
+  "Registering Dependencies" section in the README to learn more about enabling
+  some of the additional features included in this application.
+*/
