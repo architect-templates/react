@@ -62,7 +62,7 @@ $ architect deploy architect.yml -e example-environment
 
 ---
 # Additional Learning
-After you feel comfortable deploying a component with Architect, feel free to check out the powerful features we've added into this component.
+After you feel comfortable deploying with Architect, check out the powerful features we've added into this component!
 
 Additional features within this component:
 * [Adding a dependency](#adding-a-dependency)
@@ -89,7 +89,7 @@ $ architect link .
 $ cd ../
 ```
 
-After linking, we'll need to bring back some of the commented-out pieces in both the `architect.yml` file and the application itself.
+After linking, some sections of the `architect.yml` file and the application code will need to be uncommented.
 
 ### Update the architect.yml file
 In the `architect.yml`, uncomment lines 14 and 15. These lines let Architect know that the `react` component depends on the `node-rest-api`. Additionally, it tells Architect to use the latest linked version available with the `latest` tag.
@@ -107,11 +107,13 @@ environment:
 ```
 
 ### Update the application
-Finally, open  the file `/src/App.js` and uncomment lines 3,4,11 and 12 and save the file. This will include a form to input your favorite movies as well as a table to display them.
+Finally, open the file `/src/App.js`, uncomment lines 3, 4, 11, and 12, then save the file. The uncommented JavaScript files include a form and a table to input and display a list of your favorite movies.
 
 ## Relaunch the component
-Now that we've added our dependency, we can relaunch the component. If you haven't already stopped your app, do so by hitting `Ctrl-C`. Then run:
+Now that the dependency has been added, the component should be restarted to reflect the changes in the `architect.yml` file. If the app hasn't already been restarted, do so by hitting `Ctrl-C`. Then run:
 
 ```sh
 $ architect dev .
 ```
+
+to see the new changes.
