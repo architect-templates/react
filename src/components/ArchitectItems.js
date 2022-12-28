@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import ItemsTable from "./ItemsTable";
+import Table from "react-bootstrap/Table";
 
 const apiAddress = `${process.env.REACT_APP_API_ADDR}/items`;
 
-class ItemForm extends Component {
+class ArchitectItems extends Component {
 
   constructor(props) {
     super(props);
@@ -82,11 +82,28 @@ class ItemForm extends Component {
             </Button>
           </div>
         </Form>
-        {this.state.items.length > 0 ? <ItemsTable items={this.state.items}/> : <label>No Entries</label> }
+
+        {this.state.items && this.state.items.length > 0 ?
+        <Table striped bordered>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.items.map(function(i, index) {
+              return <tr key={index}>
+                <td>{i.name}</td>
+                <td>{i.rating}</td>
+              </tr>;
+            })}
+          </tbody>
+        </Table> :
+        <label>No Entries</label> }
       </>
     );
   }
 }
 
-export default ItemForm;
-
+export default ArchitectItems;

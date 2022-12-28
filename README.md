@@ -67,7 +67,6 @@ After you feel comfortable deploying with Architect, check out the powerful feat
 Additional features within this component:
 * [Adding a dependency](#adding-a-dependency)
 
-
 # Adding a dependency
 Using a microservice framework allows you to decouple an application and alleviate many of the problems that come with a monolithic architecture. Architect provides first class support for microservce architecture through the use of dependencies.
 
@@ -107,7 +106,7 @@ environment:
 ```
 
 ### Update the application
-Finally, open the file `/src/App.js`, uncomment lines 3, 4, 11, and 12, then save the file. The uncommented JavaScript files include a form and a table to input and display a list of your favorite movies.
+Open the file `/src/App.js`, uncomment lines 2 and 10, and save the file. The uncommented JavaScript file includes a form and a table to input and display a list of your favorite movies.
 
 ## Relaunch the component
 Now that the dependency has been added, the component should be restarted to reflect the changes in the `architect.yml` file. If the app hasn't already been restarted, do so by hitting `Ctrl-C`. Then run:

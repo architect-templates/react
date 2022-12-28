@@ -1,22 +1,20 @@
 import ArchitectHeader from './components/ArchitectHeader';
+// import ArchitectItems from "./components/ArchitectItems";
 import ArchitectNextSteps from "./components/ArchitectNextSteps";
-// import ItemForm from "./components/ItemForm";
-// import ItemsTable from './components/ItemsTable';
 import './index.css';
 
 const App = () => (
   <div className="container">
     <ArchitectHeader/>
     <ArchitectNextSteps/>
-    {/* <ItemForm/> */}
-    {/* <ItemsTable/> */}
+    {/* <ArchitectItems/> */}
   </div>
 );
 
 export default App;
 
 /*
-  You'll notice that we've commented out some lines of code. Follow along with the
+  Some lines of code in this file are commented out. Follow along with the
   "Registering Dependencies" section in the README to learn more about enabling
-  some of the additional features we've included in this application.
+  some of the additional features included in this application.
 */
