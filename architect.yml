@@ -38,6 +38,7 @@ services:
       # REACT_APP_API_ADDR: ${{ dependencies.node-rest-api.services.api.interfaces.main.ingress.url }}
     # The entrypoint is used here to import environment variables to the client-side app in production
     entrypoint: /usr/src/app/bin/entrypoint.sh
+    command: npm run start
     # The liveness_probe makes sure the application is healthy - if not, it will re-start the application
     liveness_probe:
       command: curl --fail 0.0.0.0:8080
@@ -49,7 +50,6 @@ services:
     debug:
       command: npm run dev
       build:
-        dockerfile: Dockerfile.dev
         args:
           NODE_ENV: development
       volumes:
