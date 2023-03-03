@@ -1,14 +1,15 @@
 import ArchitectHeader from './components/ArchitectHeader';
 import ArchitectForm from "./components/ArchitectForm";
+import {Container, CssBaseline } from '@mui/material';
 
-import './index.css';
+import "./index.css";
 
 const App = () => (
-  <div className="container">
+    <Container>
+      <CssBaseline />
     <ArchitectHeader/>
     { <ArchitectForm/> }
-  </div>
+  </Container>
 );
-
 export default App;
 
