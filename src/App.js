@@ -1,12 +1,12 @@
 import ArchitectHeader from './components/ArchitectHeader';
-import ArchitectItems from "./components/ArchitectItems";
+import ArchitectForm from "./components/ArchitectForm";
 
 import './index.css';
 
 const App = () => (
   <div className="container">
     <ArchitectHeader/>
-    { <ArchitectItems/> }
+    { <ArchitectForm/> }
   </div>
 );
 
