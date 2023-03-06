@@ -1,21 +1,33 @@
 name: react
 
 description: |
-  Example component that includes a React frontend
+  An Architect Starter Project using React.
 
 homepage: https://github.com/architect-templates/react
 
 keywords:
   - react
   - express
+  - javascript
 
-## Want to learn about dependencies? Follow along with "Adding a Dependency" in the README
-##   then uncomment the two lines below and uncomment line 38 (REACT_APP_API_ADDR)
-# dependencies:
-#   node-rest-api: latest
+secrets:
+  db_user:
+    description: Root user to assign to the component's DB
+    default: architect
+  db_pass:
+    description: Root password to assign to the component's DB
+    default: secret
+  db_name:
+    description: Name of the DB the component will store content in
+    default: api-db
+  db_port:
+    description: Port for the db
+    default: 5432
+  api_port:
+    description: Port for api
+    default: 8080
 
-# Below are the configured services for the React component. Note that the actual
-# react application we're working on is defined as a service on line 29
+# Below are the configured services for the React component.
 # For more info - https://docs.architect.io/components/services/
 services:
   app:
@@ -24,18 +36,18 @@ services:
       context: ./
       args:
         NODE_ENV: production
-    # Main interface port used to help define the url in the `interfaces` block on line 53
+    # Main interface port used to help define the url in the `interfaces` block
     interfaces:
       main:
         port: 8080
-        # ingresses are used to expose the application to the gateway, allowing
+        #   Ingresses are used to expose the application to the API gateway, allowing
         #   other services and dependencies to connect to it.
         #   For more info - https://docs.architect.io/components/ingress-rules/
         ingress:
           subdomain: app
     environment:
       PORT: 8080
-      # REACT_APP_API_ADDR: ${{ dependencies.node-rest-api.services.api.interfaces.main.ingress.url }}
+      REACT_APP_API_ADDR: ${{ services.api.interfaces.http.ingress.url }}
     # The entrypoint is used here to import environment variables to the client-side app in production
     entrypoint: /usr/src/app/bin/entrypoint.sh
     command: npm run start
@@ -58,3 +70,25 @@ services:
           mount_path: /usr/src/app/src
           # Path to source code relative to the architect.yml file (/src)
           host_path: ./src
+  api-db:
+    image: postgres:12
+    interfaces:
+      database:
+        port: ${{ secrets.db_port }}
+        protocol: postgresql
+    environment:
+      POSTGRES_USER: ${{ secrets.db_user }}
+      POSTGRES_PASSWORD: ${{ secrets.db_pass }}
+      POSTGRES_DB: ${{ secrets.db_name }}
+  api:
+    image: devmandy/starter-project-api:v1
+    interfaces:
+      http:
+        port: ${{ secrets.api_port }}
+        ingress:
+          subdomain: api
+    environment:
+      DB_ADDR: ${{ services.api-db.interfaces.database.url }}/${{ secrets.db_name }}
+      DB_USER: ${{ secrets.db_user }}
+      DB_PASS: ${{ secrets.db_pass }}
+      PORT: ${{ secrets.api_port }}

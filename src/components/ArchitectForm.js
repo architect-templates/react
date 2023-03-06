@@ -1,12 +1,10 @@
 import axios from 'axios';
+import ArchitectItemsTable from "./ArchitectItemsTable";
 import React, { useState, useEffect } from "react";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { Box, Button, Container, CssBaseline, Grid, TextField, Typography }  from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import ArchitectItemsList from "./ArchitectItemsList";
-
-import '../index.css';
+const theme = createTheme();
 
 const apiAddress = `${process.env.REACT_APP_API_ADDR}/items`;
 
@@ -50,42 +48,62 @@ const ArchitectForm = () => {
    };
 
   return (
-  <>
-  <h2 className='mt-4'>Favorite Movies</h2>
-    <form onSubmit={handleSubmit} className="form">
-      <Grid container direction="column">
-        <Grid item className="mb-3">
-          <TextField
-            required
-            id="outlined-basic"
-            name="name"
-            value= {state.name}
-            label="Name"
-            type="text"
-            onChange={e => setState({...state, [e.target.name]: e.target.value})}
-          />
-        </Grid>
-        <Grid item className="mb-3">
-          <TextField
-            required
-            id="outlined-basic"
-            label="Rating 1-5"
-            name="rating"
-            value={state.rating}
-            type="number"
-            onChange={e => setState({...state, [e.target.name]: e.target.value})}
-          />
-        </Grid>
-         <div className="d-grid">
-        <Button className="button" type="submit" onClick={handleSubmit}>
-                Submit
-        </Button>
-        <br></br>
-        {state.items.length > 0 ? <ArchitectItemsList items={state.items}/> : <label>No Entries</label> }
-        </div>
-      </Grid>
-    </form>
-    </>
+      <ThemeProvider theme={theme}>
+        <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+            sx={{
+                marginTop: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}
+        >
+        <Typography component="h1" variant="h5">
+            Favorite Movie
+        </Typography>
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        required
+                        fullWidth
+                        name="name"
+                        value= {state.name}
+                        label="Name"
+                        type="text"
+                        onChange={e => setState({...state, [e.target.name]: e.target.value})}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                        <TextField
+                            required
+                            fullWidth
+                            label="Rating 1-5"
+                            name="rating"
+                            value={state.rating}
+                            type="number"
+                            inputProps={{ min: 1, max: 5}}
+                            onChange={e => setState({...state, [e.target.name]: e.target.value})}
+                    />
+                    </Grid>
+            </Grid>
+            <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                onClick={handleSubmit}
+                sx={{ mt: 3, mb: 2 }}
+            >
+                Sign Up
+            </Button>
+
+            {state.items.length > 0 ? <ArchitectItemsTable items={state.items}/> : <label>No Entries</label> }
+        </Box>
+        </Box>
+        </Container>
+      </ThemeProvider>
   );
-};
+}
+
 export default ArchitectForm;

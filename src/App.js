@@ -7,9 +7,9 @@ import "./index.css";
 const App = () => (
     <Container>
       <CssBaseline />
-    <ArchitectHeader/>
-    { <ArchitectForm/> }
-  </Container>
+        <ArchitectHeader/>
+        { <ArchitectForm/> }
+    </Container>
 );
 export default App;
 
