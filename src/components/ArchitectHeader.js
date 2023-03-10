@@ -17,4 +17,3 @@ class ArchitectHeader extends React.Component {
 }
 
 export default ArchitectHeader;
-
