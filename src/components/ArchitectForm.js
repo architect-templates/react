@@ -24,7 +24,7 @@ const ArchitectForm = () => {
     useEffect(() => {
         async function setItems() {
             const items = await getItems();
-            setState({ items: items, isLoadingItems: false });
+            setState({ items: items, isLoadingItems: true });
         }
         setItems();
     }, [])
