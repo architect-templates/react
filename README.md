@@ -6,18 +6,14 @@
   </picture>
 </p>
 
-<p style="text-align:center">
+<p align="center">
   A dynamic microservices framework for building, connecting, and deploying cloud-native applications.
 </p>
 
 ---
 
-<p style="text-align:center">
+<p align="center">
   <a href="//react.org" target="blank"><img src="https://create-react-app.dev/img/logo.svg" width="320" alt="React Logo" /></a>
-</p>
-
-<p style="text-align:center">
-  A JavaScript library for building user interfaces.
 </p>
 
 ---
@@ -38,7 +34,27 @@ This starter application will show how easy it is to deploy an application both 
 To use this project, you can clone this repo yourself or use the `architect init` command.
 
 ### Use `architect init`
-Run the following command to allow Architect to clone this project for you:
+You can use the `architect init` command to clone this repo locally. A drop-down list of Starter Projects is
+displayed for you to select from. 
+
+```bash
+%architect init
+? What is the name of your project? my-starter-project
+? Please select a framework/language for your project React
+
+######################################
+##### Let's set up your project! #####
+######################################
+
+Creating project directory... ✓
+Pulling down GitHub repository... ✓ react
+
+Successfully created project my-starter-project.
+
+Your project is ready to be deployed by Architect!
+To deploy locally, run:
+	architect dev my-starter-project/architect.yml
+```
 
 ```sh 
 $ architect init react
@@ -73,7 +89,6 @@ Give it a try! Search inside your project for “Movie Ratings” and change thi
 the file, you’ll see the frontend service recompiling in the logs and then your browser window will update automatically.
 
 ## Deploy to the Cloud
-
 Want to try deploying this application to a cloud environment? Architect's got you covered there, too!
 We offer free preview environments in our community cloud where you can deploy your applications  
 before deploying to staging or prod. This is a great opportunity for testing and getting early feedback before merging
@@ -103,16 +118,6 @@ Registering environment with Architect... done
 Environment created: https://cloud.architect.io/<account-name>/environments/my-first-environment
 ```
 
-### Register your component
-Before you can deploy to your new environment, you need to register your component with Architect. This command builds
-the artifacts for your component and pushes them to Architects registry so they are available to deploy to an 
-environment in your account. 
-
-To register your component, run the following command from the `react` directory:
-
-```sh
-$ architect register . --tag latest --account <account-name>
-```
 ### Deploy your component
 
 You are now ready to deploy your component to your environment in Architect's community cloud. To deploy your component, 
