@@ -19,8 +19,8 @@
 ---
 
 # React Starter Project
-[React](https://reactjs.org/) is a popular JavaScript framework for building frontend user interfaces for web applications. 
-This project is an example application bootstrapped with [Create React App](https://github.com/facebook/create-react-app) 
+[React](https://reactjs.org/) is a popular JavaScript framework for building frontend user interfaces for web applications.
+This project is an example application bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 and packaged into an Architect component.
 
 This starter application will show how easy it is to deploy an application both locally and in a remote environment.
@@ -35,7 +35,7 @@ To use this project, you can clone this repo yourself or use the `architect init
 
 ### Use `architect init`
 You can use the `architect init` command to clone this repo locally. A drop-down list of Starter Projects is
-displayed for you to select from. 
+displayed for you to select from.
 
 ```bash
 %architect init
@@ -56,7 +56,7 @@ To deploy locally, run:
 	architect dev my-starter-project/architect.yml
 ```
 
-```sh 
+```sh
 $ architect init react
 $ cd ./react
 ```
@@ -80,17 +80,17 @@ $ architect dev .
 When this command completes, you can reach your new application by going to https://app.localhost.architect.sh.
 ### Make your own changes
 
-This application's `architect.yml` file contains a `debug` block that enables hot-reloading for each service 
-within the component. That means you can make changes to the source code and those changes will be applied to the 
-environment automatically. This allows you to quickly iterate and see your changes without having to restart the 
+This application's `architect.yml` file contains a `debug` block that enables hot-reloading for each service
+within the component. That means you can make changes to the source code and those changes will be applied to the
+environment automatically. This allows you to quickly iterate and see your changes without having to restart the
 application stack.
 
-Give it a try! Search inside your project for Favorite Movie” and change this string to “Favorite Pizza.” Once you sa`ve 
+Give it a try! Search inside your project for "Favorite Movie” and change this string to “Favorite Pizza.” Once you sa`ve
 the file, you’ll see the frontend service recompiling in the logs and then your browser window will update automatically.
 
 ## Deploy to the Cloud
 Want to try deploying this application to a cloud environment? Architect's got you covered there, too!
-We offer free preview environments in our community cloud where you can deploy your applications  
+We offer free preview environments in our community cloud where you can deploy your applications
 before deploying to staging or prod. This is a great opportunity for testing and getting early feedback before merging
 your code. In fact, you can [configure your GitOps](https://docs.architect.io/tutorial/creating-a-component)
 to automatically deploy every PR to Architect's community cloud.
@@ -120,11 +120,11 @@ Environment created: https://cloud.architect.io/<account-name>/environments/my-f
 
 ### Deploy your component
 
-You are now ready to deploy your component to your environment in Architect's community cloud. To deploy your component, 
+You are now ready to deploy your component to your environment in Architect's community cloud. To deploy your component,
 run the following command from the `react` directory:
 
 ```sh
-architect deploy react:latest --account <account-name> \
---environment my-first-environment
+architect deploy --account <account-name> \
+--environment my-first-environment ./architect.yml
 ```
-Congrats! You've deployed your first component using Architect. 
+Congrats! You've deployed your first component using Architect.
