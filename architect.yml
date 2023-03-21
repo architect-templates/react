@@ -31,6 +31,10 @@ secrets:
 # For more info - https://docs.architect.io/components/services/
 services:
   app:
+    depends_on:
+      # We want our app to start up after the api is running so that we can connect to it on startup!
+      # This block contains a list of services we need to start before 'app' starts.
+      - api
     # Build context is the location of your application relative to the architect.yml file
     build:
       context: ./
@@ -78,8 +82,14 @@ services:
       POSTGRES_USER: ${{ secrets.db_user }}
       POSTGRES_PASSWORD: ${{ secrets.db_pass }}
       POSTGRES_DB: ${{ secrets.db_name }}
+    liveness_probe:
+      command: pg_isready -d ${{ secrets.db_name }} -U ${{ secrets.db_user }}
+      interval: 10s
+      failure_threshold: 3
   api:
-    image: devmandy/starter-project-api:v1
+    depends_on:
+      - api-db
+    image: registry.gitlab.com/architect-io/docker-files/sample-backend:latest
     interfaces:
       http:
         port: ${{ secrets.api_port }}
