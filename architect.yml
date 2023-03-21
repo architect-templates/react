@@ -48,8 +48,6 @@ services:
     environment:
       PORT: 8080
       REACT_APP_API_ADDR: ${{ services.api.interfaces.http.ingress.url }}
-    # The entrypoint is used here to import environment variables to the client-side app in production
-    entrypoint: /usr/src/app/bin/entrypoint.sh
     command: npm run start
     # The liveness_probe makes sure the application is healthy - if not, it will re-start the application
     liveness_probe:

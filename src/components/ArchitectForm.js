@@ -6,7 +6,11 @@ import ArchitectItemsTable from "./ArchitectItemsTable";
 
 const theme = createTheme();
 
-const apiAddress = `${process.env.REACT_APP_API_ADDR}/items`;
+if (!window.__RUNTIME_CONFIG__.REACT_APP_API_ADDR) {
+    throw new Error('No api addr found');
+}
+
+const apiAddress = `${window.__RUNTIME_CONFIG__.REACT_APP_API_ADDR}/items`;
 
 const getItems = async () => {
     try {
@@ -24,7 +28,7 @@ const ArchitectForm = () => {
     useEffect(() => {
         async function setItems() {
             const items = await getItems();
-            setState({ items: items, isLoadingItems: true });
+            setState({ items: items, isLoadingItems: false });
         }
         setItems();
     }, [])
