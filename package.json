@@ -15,9 +15,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "react-scripts start",
+    "dev": "node ./bin/env.js && mv runtime-env.js ./public && react-scripts start",
     "build": "react-scripts build",
-    "start": "serve -s build"
+    "start": "node ./bin/env.js && mv runtime-env.js ./build && serve -s build"
   },
   "eslintConfig": {
     "extends": [
