@@ -80,7 +80,7 @@ const ArchitectForm = () => {
                                     fullWidth
                                     name="name"
                                     value={state.name || ''}
-                                    label="Name*"
+                                    label="Name"
                                     type="text"
                                     onChange={e => setState({ ...state, [e.target.name]: e.target.value })}
                                 />
@@ -91,7 +91,7 @@ const ArchitectForm = () => {
                                     minimum="1"
                                     maximum="5"
                                     fullWidth
-                                    label="Rating 1-5*"
+                                    label="Rating 1-5"
                                     name="rating"
                                     value={state.rating || ''}
                                     type="number"
