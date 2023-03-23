@@ -44,7 +44,7 @@ const ArchitectForm = () => {
 
             await axios.post(`${apiAddress}`, body);
 
-            await setState({ name: '', rating: '', items: await getItems(), error_message: null });
+            await setState({ ...state, error_message: null });
 
         } catch (err) {
             let error_message;
@@ -53,7 +53,7 @@ const ArchitectForm = () => {
             } else {
                 error_message = 'Error submitting movie rating';
             }
-            await setState({ name: state.name, rating: state.rating, items: await getItems(), error_message });
+            await setState({ ...state, error_message });
         }
     };
 
