@@ -56,7 +56,7 @@ services:
     # The liveness_probe makes sure the application is healthy - if not, it will re-start the application
     liveness_probe:
       command: curl --fail 0.0.0.0:8080
-      interval: 10s
+      interval: 30s
       failure_threshold: 3
     # The debug block is used to enable hot-reloading to make real-time changes to an
     #   application while running `architect dev`. For more info, see -
@@ -86,7 +86,7 @@ services:
       POSTGRES_DB: ${{ secrets.db_name }}
     liveness_probe:
       command: pg_isready -d ${{ secrets.db_name }} -U ${{ secrets.db_user }}
-      interval: 30s
+      interval: 10s
       failure_threshold: 3
   api:
     depends_on:
