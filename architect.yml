@@ -62,6 +62,8 @@ services:
     #   application while running `architect dev`. For more info, see -
     #   https://docs.architect.io/components/local-configuration/#hot-reloading
     debug:
+      environment:
+        WDS_SOCKET_PORT: ${{ services.api.interfaces.http.ingress.port }} # Port for the react development server ws
       liveness_probe:
         initial_delay: 30s
       command: npm run dev
