@@ -100,7 +100,7 @@ const ArchitectForm = () => {
                                 />
                             </Grid>
                         </Grid>
-                        <p style={{ color: 'red' }}>{ state.error_message }</p>
+                        <p style={{ color: 'red', marginBottom: 0 }}>{ state.error_message }</p>
                         <Button
                             type="submit"
                             fullWidth
