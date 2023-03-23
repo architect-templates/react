@@ -23,12 +23,12 @@ const getItems = async () => {
 
 const ArchitectForm = () => {
 
-    const [state, setState] = useState({ name: '', rating: '', items: [], isLoadingItems: true });
+    const [state, setState] = useState({ name: '', rating: '', items: [], isLoadingItems: true, error_message: null });
 
     useEffect(() => {
         async function setItems() {
             const items = await getItems();
-            setState({ items: items, isLoadingItems: false });
+            setState({ items: items, isLoadingItems: false, error_message: null });
         }
         setItems();
     }, [])
@@ -44,10 +44,16 @@ const ArchitectForm = () => {
 
             await axios.post(`${apiAddress}`, body);
 
-            await setState({ name: '', rating: '', items: await getItems() });
+            await setState({ name: '', rating: '', items: await getItems(), error_message: null });
 
         } catch (err) {
-            console.error(err);
+            let error_message;
+            if (err.response.status === 409) {
+                error_message = 'That movie already exists in our list';
+            } else {
+                error_message = 'Error submitting movie rating';
+            }
+            await setState({ name: state.name, rating: state.rating, items: await getItems(), error_message });
         }
     };
 
@@ -66,7 +72,7 @@ const ArchitectForm = () => {
                     <Typography component="h1" variant="h5">
                         Favorite Movie
                     </Typography>
-                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
@@ -74,7 +80,7 @@ const ArchitectForm = () => {
                                     fullWidth
                                     name="name"
                                     value={state.name || ''}
-                                    label="Name"
+                                    label="Name*"
                                     type="text"
                                     onChange={e => setState({ ...state, [e.target.name]: e.target.value })}
                                 />
@@ -82,8 +88,10 @@ const ArchitectForm = () => {
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     required
+                                    minimum="1"
+                                    maximum="5"
                                     fullWidth
-                                    label="Rating 1-5"
+                                    label="Rating 1-5*"
                                     name="rating"
                                     value={state.rating || ''}
                                     type="number"
@@ -92,17 +100,17 @@ const ArchitectForm = () => {
                                 />
                             </Grid>
                         </Grid>
+                        <p style={{ color: 'red' }}>{ state.error_message }</p>
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
-                            onClick={handleSubmit}
                             sx={{ mt: 3, mb: 2 }}
                         >
                             Submit
                         </Button>
                         {state.isLoadingItems && <label>Loading items...</label>}
-                        {!state.isLoadingItems && state.items.length > 0 ? <ArchitectItemsTable items={state.items} /> : <label>No Entries</label>}
+                        {!state.isLoadingItems && state.items?.length > 0 ? <ArchitectItemsTable items={state.items} /> : <label>No Entries</label>}
                     </Box>
                 </Box>
             </Container>
