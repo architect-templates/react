@@ -44,7 +44,7 @@ const ArchitectForm = () => {
 
             await axios.post(`${apiAddress}`, body);
 
-            await setState({ ...state, error_message: null });
+            await setState({ name: '', rating: '', items: state.items.concat(body), error_message: null });
 
         } catch (err) {
             let error_message;
